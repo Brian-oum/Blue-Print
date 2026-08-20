@@ -1,0 +1,317 @@
+{% extends 'Print/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="preload" as="image" href="{% static 'images/Large-Format.png' %}" fetchpriority="high">
+{% endblock %}
+
+{% block content %}
+
+<!-- ============ ABOUT HERO / MISSION SECTION ============ -->
+<section class="about-hero-section">
+    <div class="container">
+        <div class="row gy-5 gx-5 align-items-stretch">
+
+            <!-- Left Text Column -->
+            <div class="col-lg-5 about-text-col">
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">OUR MISSION</span>
+                </div>
+                <p class="about-hero-description mb-4">
+                    To stimulate our marketing brains through
+                    comprehensive communication and innovative
+                    technology. in order to ensure our clients
+                    reach their target audience in the most
+                    effective way possible
+                </p>
+
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">OUR VISION</span>
+                </div>
+                <p class="about-hero-description mb-4">
+                    To influence people and change
+                    human behaviour through smart,
+                    holistic and effective
+                    communication.
+                </p>
+
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">OUR EXPERTISE</span>
+                </div>
+                <p class="about-hero-description mb-4">
+                    We take great satisfaction in our capacity to manage a variety of services.
+                    Our brand is capable of handling both large- and small-scale print and
+                    branding projects. Our team includes professionals with extensive
+                    training in the fields of media production both audio and visual
+                    production facilities, unskilled labor, management, logistics, and many
+                    others.
+                </p>
+            </div>
+
+            <!-- Right Image Column -->
+            <div class="col-lg-7 ps-lg-4 pe-0">
+                <div class="about-hero-media">
+                    <img src="{% static 'images/Large-Format.png' %}" alt="Blue Print Agencies press floor" class="about-hero-image" fetchpriority="high" decoding="async">
+                    <div class="about-years-badge">
+                        <div class="years-number">14 Years</div>
+                        <div class="years-label">Growing Bigger & Stronger</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ STATS SECTION + CORE VALUES DARK BAND ============
+     Wrapped together so the particle tunnel canvas can be sized once
+     and paint continuously behind both the stats section and the top
+     half of the value cards below it. -->
+<div class="dark-canvas-region">
+    <canvas class="stats-particle-canvas" aria-hidden="true"></canvas>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-6 col-lg-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count-to="500" data-suffix="+">0</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count-to="1200" data-suffix="+">0</div>
+                        <div class="stat-label">Print Jobs</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count-to="15" data-suffix="k+">0</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count-to="20" data-suffix="+">0</div>
+                        <div class="stat-label">Print Specialists</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CORE VALUES SECTION (styled after the "Our Expert Team" grid) ============ -->
+    <section class="values-section">
+        <!-- Measuring stick only: transparent, lets the canvas above show
+             through. Its height is set by main.js to reach the vertical
+             midpoint of the first value card. -->
+        <div class="values-dark-band" aria-hidden="true"></div>
+        <!-- Opaque white panel starting exactly where the dark band ends,
+             so the section reads white from the cards' midpoint down. -->
+        <div class="values-white-fill" aria-hidden="true"></div>
+        <div class="container">
+            <div class="section-tag-wrapper mb-4 justify-content-center">
+                <span class="tag-line"></span>
+                <span class="section-tag">OUR CORE VALUES</span>
+            </div>
+
+            <div class="row g-4 value-cards-row">
+                <div class="col-6 col-lg-3">
+                    <div class="value-card value-card-quality">
+                        <div class="value-card-icon-wrap">
+                            <div class="value-icon-circle"><i class="bi bi-patch-check"></i></div>
+                        </div>
+                        <div class="value-card-body">
+                            <h3 class="value-title">Customer Centered</h3>
+                            <p class="value-text">Putting our clients at the center of what we do</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="value-card value-card-integrity">
+                        <div class="value-card-icon-wrap">
+                            <div class="value-icon-circle"><i class="bi bi-shield-check"></i></div>
+                        </div>
+                        <div class="value-card-body">
+                            <h3 class="value-title">Money Value</h3>
+                            <p class="value-text">Giving our clients value for their money</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="value-card value-card-timeliness">
+                        <div class="value-card-icon-wrap">
+                            <div class="value-icon-circle"><i class="bi bi-clock-history"></i></div>
+                        </div>
+                        <div class="value-card-body">
+                            <h3 class="value-title">Reward</h3>
+                            <p class="value-text">We value, Challenge and reward our stakeholders.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="value-card value-card-innovation">
+                        <div class="value-card-icon-wrap">
+                            <div class="value-icon-circle"><i class="bi bi-lightbulb"></i></div>
+                        </div>
+                        <div class="value-card-body">
+                            <h3 class="value-title">Partnerships</h3>
+                            <p class="value-text">Partnering with like minded persons/organizations to improve lives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ============ TESTIMONIALS SECTION ============ -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+
+            <!-- Left Text Column -->
+            <div class="col-lg-4">
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">TESTIMONIALS</span>
+                </div>
+                <h2 class="testimonials-title mb-4">
+                    Dont just take our word for it. Hear it from the businesses we print for.
+                </h2>
+                <a href="/contact.html" class="btn btn-cyan-square">WRITE FOR US</a>
+            </div>
+
+            <!-- Right Slideshow Column -->
+            <div class="col-lg-8">
+                <div class="testimonial-slider">
+                    <div class="testimonial-pages">
+
+                        <!-- Page 1 -->
+                        <div class="testimonial-page active">
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Mona Parker" class="testimonial-avatar" loading="lazy" decoding="async">
+                                    <div>
+                                        <p class="testimonial-name">Mona Parker</p>
+                                        <p class="testimonial-role">Retail Store Owner</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    It couldn't be done without the help of Blue Print Agencies, absolutely reliable people with real attention to detail, recommended.
+                                </p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Casey" class="testimonial-avatar" loading="lazy" decoding="async">
+                                    <div>
+                                        <p class="testimonial-name">Sarah Casey</p>
+                                        <p class="testimonial-role">CEO, Casey & Co</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    We needed a full corporate stationery set on a tight deadline and they delivered flawless work right on time.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Page 2 -->
+                        <div class="testimonial-page">
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Miller" class="testimonial-avatar" loading="lazy" decoding="async">
+                                    <div>
+                                        <p class="testimonial-name">James Miller</p>
+                                        <p class="testimonial-role">Founder, TechNova</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Their team took the time to understand our brand before running a single sheet. The result felt tailor made, not generic.
+                                </p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Ruiz" class="testimonial-avatar" loading="lazy" decoding="async">
+                                    <div>
+                                        <p class="testimonial-name">Elena Ruiz</p>
+                                        <p class="testimonial-role">Marketing Director</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Fast, communicative, and genuinely careful with color accuracy. By far the smoothest print process we've had.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Page 3 -->
+                        <div class="testimonial-page">
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="David Okoro" class="testimonial-avatar" loading="lazy" decoding="async">
+                                    <div>
+                                        <p class="testimonial-name">David Okoro</p>
+                                        <p class="testimonial-role">Operations Lead</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    From proof to final delivery they kept us in the loop at every step. Rare to find a print partner this organized.
+                                </p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Priya Nair" class="testimonial-avatar" loading="lazy" decoding="async">
+                                    <div>
+                                        <p class="testimonial-name">Priya Nair</p>
+                                        <p class="testimonial-role">Founder, Loomcraft</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Our new packaging looked exactly like the proof, no surprises. They clearly know what they're doing.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="testimonial-dots">
+                        <button class="testimonial-dot active" type="button" aria-label="Show testimonials 1"></button>
+                        <button class="testimonial-dot" type="button" aria-label="Show testimonials 2"></button>
+                        <button class="testimonial-dot" type="button" aria-label="Show testimonials 3"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ CLIENTS SECTION ============ -->
+<section class="clients-section">
+    <div class="clients-wide-container">
+        <div class="clients-card clients-card-static">
+            <p class="clients-tag">TRUSTED BY BUSINESSES ACROSS THE REGION:</p>
+            <div class="clients-logos clients-logos-static">
+                <img src="{% static 'images/DHL.png' %}" alt="NovaWorks" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/SSL.png' %}" alt="Trustly" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/CALIDAD.png' %}" alt="Echopoint" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/AMKA.png' %}" alt="Sheppard." class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/FIRST-CHOICE.png' %}" alt="Opengrid" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/KABATI.png' %}" alt="NovaWorks" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/KIBABII.png' %}" alt="Echopoint" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/MAFANIKIO.png' %}" alt="Sheppard." class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/ST-JOHN.png' %}" alt="NovaWorks" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/AGNES-SCHOOL.png' %}" alt="Echopoint" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/TUMAINI.png' %}" alt="Sheppard." class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/WATBELL.png' %}" alt="Opengrid" class="client-logo" loading="lazy" decoding="async">
+                <img src="{% static 'images/ZAWADI.png' %}" alt="Opengrid" class="client-logo" loading="lazy" decoding="async">
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

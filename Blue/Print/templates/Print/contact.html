@@ -1,0 +1,167 @@
+{% extends 'Print/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | Blue Print Agencies{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================
+     CONTACT — MAP HERO with a wide, overlapping
+     info + form card floating over the bottom edge.
+     ========================================== -->
+<section class="contact-hero-section">
+  <div class="contact-map-container">
+    <div class="contact-map-wrapper">
+      <iframe
+        class="contact-map-iframe"
+        src="https://www.google.com/maps?q=Goodhope+House,+Luthuli+Avenue,+Nairobi,+Kenya&z=16&output=embed"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Blue Print Agencies location — Goodhope House, Luthuli Avenue">
+      </iframe>
+    </div>
+
+    <!-- Wide floating card: contact details (left) + contact form (right) -->
+    <div class="contact-card">
+
+      <!-- LEFT: Contact details -->
+      <div class="contact-info-panel">
+        <span class="section-tag contact-info-tag">Get In Touch</span>
+        <h3 class="contact-info-title">Visit Our Office</h3>
+
+        <ul class="contact-info-list">
+          <li class="contact-info-item">
+            <span class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></span>
+            <span class="contact-info-text">
+              Luthuli Avenue, Kamae Lane<br>
+              Goodhope House, Ground Floor, Office 23<br>
+              Nairobi, Kenya
+            </span>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon"><i class="bi bi-telephone-fill"></i></span>
+            <span class="contact-info-text">
+              <a href="tel:+254700123456">+254 700 123 456</a>
+            </span>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon"><i class="bi bi-envelope-fill"></i></span>
+            <span class="contact-info-text">
+              <a href="mailto:info@blueprintagencies.co.ke">info@blueprintagencies.co.ke</a>
+            </span>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon"><i class="bi bi-clock-fill"></i></span>
+            <span class="contact-info-text">
+              Mon – Fri: 8:00am – 5:30pm<br>
+              Saturday: 9:00am – 1:00pm
+            </span>
+          </li>
+        </ul>
+
+        <div class="contact-info-social">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://wa.me/254700123456" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact form -->
+      <div class="contact-form-panel">
+        <span class="section-tag">Send A Message</span>
+        <h3 class="contact-form-title">Let's Talk About Your Project</h3>
+
+        <form id="contactForm" class="contact-form" method="post" action="{% url 'contact' %}" novalidate>
+          {% csrf_token %}
+
+          <div class="contact-form-row">
+            <div class="contact-form-group">
+              <input type="text" class="contact-form-control" id="contactName" name="name" placeholder="Your Name (*)" required>
+            </div>
+            <div class="contact-form-group">
+              <input type="email" class="contact-form-control" id="contactEmail" name="email" placeholder="Your Email (*)" required>
+            </div>
+          </div>
+
+          <div class="contact-form-row">
+            <div class="contact-form-group">
+              <input type="text" class="contact-form-control" id="contactSubject" name="subject" placeholder="Subject">
+            </div>
+            <div class="contact-form-group">
+              <select class="contact-form-control contact-form-select" id="contactDepartment" name="department">
+                <option value="" selected disabled>Business Department</option>
+                <option value="sales">Sales &amp; Quotes</option>
+                <option value="design">Design &amp; Print</option>
+                <option value="support">Customer Support</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="contact-form-row">
+            <div class="contact-form-group contact-form-group-full">
+              <textarea class="contact-form-control" id="contactMessage" name="message" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-accent contact-form-submit">
+            Send Message <i class="bi bi-send-fill"></i>
+          </button>
+
+          <p class="contact-form-status" id="contactFormStatus"></p>
+        </form>
+      </div>
+
+    </div><!-- /.contact-card -->
+  </div><!-- /.contact-map-container -->
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('contactFormStatus');
+    if (!form) return;
+
+    // Same number as WHATSAPP_NUMBER in models.py
+    const WHATSAPP_NUMBER = '254721960596';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const name = form.querySelector('#contactName').value.trim();
+      const email = form.querySelector('#contactEmail').value.trim();
+      const subject = form.querySelector('#contactSubject').value.trim();
+      const departmentSelect = form.querySelector('#contactDepartment');
+      const departmentLabel = departmentSelect.selectedIndex > -1
+        ? departmentSelect.options[departmentSelect.selectedIndex].text
+        : '';
+      const message = form.querySelector('#contactMessage').value.trim();
+
+      let text = "Hi, I'd like to get in touch.\n\n";
+      text += `Name: ${name}\n`;
+      text += `Email: ${email}\n`;
+      if (subject) text += `Subject: ${subject}\n`;
+      if (departmentSelect.value) text += `Department: ${departmentLabel}\n`;
+      text += `\nMessage:\n${message}`;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+      status.textContent = 'Opening WhatsApp…';
+      status.classList.remove('is-error');
+      status.classList.add('is-success');
+
+      window.open(url, '_blank', 'noopener');
+      form.reset();
+    });
+  });
+</script>
+{% endblock %}
