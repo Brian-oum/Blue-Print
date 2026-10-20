@@ -5,7 +5,7 @@ from django.utils.text import slugify
 
 # Blue Print Agencies WhatsApp number, digits only (no "+", spaces, or dashes).
 # Matches the "+254 700 123 456" shown in the site topbar.
-WHATSAPP_NUMBER = "254 721 960 596"
+WHATSAPP_NUMBER = "254180213430"
 
 
 class Product(models.Model):

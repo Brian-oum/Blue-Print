@@ -7,20 +7,21 @@
 <section class="products-section">
     <div class="container">
 
+        {% if 'category' in request.GET %}
+        <!-- ============ FILTERED VIEW: products for the chosen category ============ -->
         <div class="section-tag-wrapper mb-3 justify-content-center">
             <span class="tag-line"></span>
             <span class="section-tag">OUR PRODUCTS</span>
         </div>
-        <h1 class="products-title text-center mb-5">Browse what we can print for you</h1>
-
-        <div class="products-filter mb-4">
-            <label for="categorySelect" class="visually-hidden">Filter by category</label>
-            <select id="categorySelect" class="products-category-select">
-                <option value="/products/" {% if not current_category %}selected{% endif %}>All Products</option>
-                {% for key, label in category_choices %}
-                <option value="/products/?category={{ key }}" {% if current_category == key %}selected{% endif %}>{{ label }}</option>
-                {% endfor %}
-            </select>
+        <h1 class="products-title text-center mb-3">
+            {% if current_category %}
+                {% for key, label in category_choices %}{% if key == current_category %}{{ label }}{% endif %}{% endfor %}
+            {% else %}
+                All Products
+            {% endif %}
+        </h1>
+        <div class="products-back-link text-center mb-5">
+            <a href="/products/" class="products-back-btn"><i class="bi bi-arrow-left"></i> Back to categories</a>
         </div>
 
         <div class="row g-4">
@@ -38,7 +39,7 @@
             </div>
             {% empty %}
             <div class="col-12">
-                <p class="text-center text-muted">No products available right now — check back soon.</p>
+                <p class="text-center text-muted">No products available in this category right now — check back soon.</p>
             </div>
             {% endfor %}
         </div>
@@ -67,6 +68,39 @@
 
             </ul>
         </nav>
+        {% endif %}
+
+        {% else %}
+        <!-- ============ LANDING VIEW: category picker only ============ -->
+        <div class="section-tag-wrapper mb-3 justify-content-center">
+            <span class="tag-line"></span>
+            <span class="section-tag">OUR PRODUCTS</span>
+        </div>
+        <h1 class="products-title text-center mb-5">Browse what we can print for you</h1>
+
+        <div class="category-picker-grid">
+            <a href="/products/?category=" class="category-tile">
+                <span class="category-tile-image" style="--tile-img: url('{% static 'images/packaging-3.png' %}');">
+                    <span class="category-tile-overlay"></span>
+                </span>
+                <span class="category-tile-label">All Products</span>
+            </a>
+            {% for key, label in category_choices %}
+            <a href="/products/?category={{ key }}" class="category-tile">
+                <span class="category-tile-image"
+                   style="--tile-img: url('{% static 'images/packaging.png' %}');
+                          {% if key == 'fabric' %}--tile-img: url('{% static 'images/fabric-branding.png' %}');{% endif %}
+                          {% if key == 'advertising' %}--tile-img: url('{% static 'images/banner-printing.jpg' %}');{% endif %}
+                          {% if key == 'stationery' %}--tile-img: url('{% static 'images/stationery.png' %}');{% endif %}
+                          {% if key == 'signs' %}--tile-img: url('{% static 'images/signage-.jpg' %}');{% endif %}
+                          {% if key == 'giveway' %}--tile-img: url('{% static 'images/bags.jpg' %}');{% endif %}
+                          {% if key == 'graphic' %}--tile-img: url('{% static 'images/Yoghurt-cups.jpg' %}');{% endif %}">
+                    <span class="category-tile-overlay"></span>
+                </span>
+                <span class="category-tile-label">{{ label }}</span>
+            </a>
+            {% endfor %}
+        </div>
         {% endif %}
 
     </div>

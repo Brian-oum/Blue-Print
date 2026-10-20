@@ -37,6 +37,23 @@ a {
   transition: all 0.3s ease;
 }
 
+/* Bootstrap's .container caps out at 1320px and never grows past it,
+   which leaves large empty margins on wider laptop/desktop screens
+   (e.g. 1600px-1920px, common on 17" displays). Let it grow a bit
+   further on those larger viewports, in line with the wider
+   1400px/1600px containers already used elsewhere on the site. */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1360px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
 /* Color & Button Utilities */
 .accent {
   color: var(--accent-color);
@@ -712,7 +729,7 @@ a.topbar-item:hover {
 
 .back-to-top {
   /* floated out of the footer row and pinned to the bottom-right,
-     offset enough to sit beside the Chatway bubble rather than
+     offset enough to sit beside the WhatsApp bubble rather than
      overlapping it */
   position: fixed;
   right: 96px;
@@ -749,7 +766,7 @@ a.topbar-item:hover {
 /* ============ FLOATING WHATSAPP BUTTON ============ */
 .whatsapp-float {
   position: fixed;
-  left: 24px;
+  right: 24px;
   bottom: 24px;
   width: 56px;
   height: 56px;
@@ -773,7 +790,7 @@ a.topbar-item:hover {
 
 @media (max-width: 575px) {
   .whatsapp-float {
-    left: 16px;
+    right: 16px;
     bottom: 16px;
     width: 50px;
     height: 50px;
@@ -2175,24 +2192,23 @@ a.topbar-item:hover {
   color: #ffffff;
 }
 
+/* Static caption sitting below each flip card. Unlike the card itself,
+   this never rotates — it always shows the service's name regardless
+   of hover/flip state. */
+.flip-card-caption {
+  padding-top: 16px;
+}
+
 .flip-card-title {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-dark);
   line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.flip-card-text {
-  color: #ffffff;
-  font-size: 0.8rem;
-  line-height: 1.6;
   margin-bottom: 0;
 }
 
-.flip-card-back .flip-card-title {
-  color: #ffffff;
-}
+/* Title/description were removed; the flip cards now show only the
+   icon on the front and the icon + "Contact us" link on the back. */
 
 .flip-card-link {
   color: #ffffff;
@@ -2279,43 +2295,48 @@ a.topbar-item:hover {
   }
 
   /* Removes the column wrapper from layout (keeping it in the DOM for
-     any JS/semantics) so its two stacked cards become direct scroll
-     items instead of a vertical pair. Well supported on modern mobile
-     Safari/Chrome. */
+     any JS/semantics) so its two stacked card+caption items become
+     direct scroll items instead of a vertical pair. Well supported on
+     modern mobile Safari/Chrome. */
   .service-flip-col {
     display: contents;
   }
 
-  .service-flip-card {
+  /* Each scroll item is the card plus its caption, so the title
+     travels with the image as the strip scrolls. */
+  .service-flip-item {
     flex: 0 0 78%;
     max-width: 300px;
-    height: 260px;
     scroll-snap-align: start;
   }
 
-  /* Fix: the last card was snapping its LEFT edge to the strip's start,
-     which — with no further card to fill the remainder — left a block
+  .service-flip-card {
+    height: 260px;
+  }
+
+  /* Fix: the last item was snapping its LEFT edge to the strip's start,
+     which — with no further item to fill the remainder — left a block
      of blank white track visible to its right once fully scrolled.
      Snapping its RIGHT edge to the strip's end instead means it lands
      flush against the end with nothing left over.
 
      NOTE: because .service-flip-col uses display:contents above, it is
      removed from the *rendered* box tree but NOT from the DOM tree that
-     :last-child matches against. A bare ".service-flip-card:last-child"
-     therefore matches the last card in EVERY column (cards 2, 4, and 6),
-     not just the true last card in the scroll strip. Having three cards
+     :last-child matches against. A bare ".service-flip-item:last-child"
+     therefore matches the last item in EVERY column (items 2, 4, and 6),
+     not just the true last item in the scroll strip. Having three items
      fight for the "end" snap point is exactly what produced the stray
      white gap on the right after scrolling — the browser could rest on
-     card 4's end instead of the real final card, leaving track un-
-     scrolled beyond it. Scoping the selector to only the last card of
-     the last column targets card 6 alone and fixes it. */
-  .service-flip-col:last-child .service-flip-card:last-child {
+     item 4's end instead of the real final item, leaving track un-
+     scrolled beyond it. Scoping the selector to only the last item of
+     the last column targets item 6 alone and fixes it. */
+  .service-flip-col:last-child .service-flip-item:last-child {
     scroll-snap-align: end;
   }
 }
 
 @media (max-width: 380px) {
-  .service-flip-card {
+  .service-flip-item {
     flex-basis: 85%;
   }
 }
@@ -2731,6 +2752,102 @@ a.topbar-item:hover {
     height: 220px;
   }
 }
+
+/* ==========================================
+   PRODUCTS — CATEGORY PICKER (landing view)
+   Shown instead of the product grid when the products page is
+   visited with no ?category= in the URL. Each tile is a link that
+   navigates to the filtered product grid for that category.
+   ========================================== */
+.category-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.category-tile {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-tile:hover .category-tile-label,
+.category-tile:focus-visible .category-tile-label {
+  color: var(--accent, #b3892f);
+}
+
+.category-tile-image {
+  position: relative;
+  display: block;
+  min-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-image: var(--tile-img);
+  transition: transform 0.3s ease;
+}
+
+.category-tile:hover .category-tile-image,
+.category-tile:focus-visible .category-tile-image {
+  transform: translateY(-4px);
+}
+
+.category-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25) 100%);
+  transition: background 0.3s ease;
+}
+
+.category-tile:hover .category-tile-overlay,
+.category-tile:focus-visible .category-tile-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.category-tile-label {
+  display: block;
+  color: var(--text-dark);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.3;
+  text-align: center;
+  padding: 14px 20px;
+  transition: color 0.3s ease;
+}
+
+.products-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.products-back-btn:hover {
+  color: var(--accent-color);
+}
+
+@media (max-width: 991px) {
+  .category-picker-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .category-picker-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .category-tile-image {
+    min-height: 150px;
+  }
+  .category-tile-label {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+}
+
 /* ==========================================
    CONTACT — MAP HERO + WIDE OVERLAPPING CARD
    Card floats over the map's bottom edge like a business card laid

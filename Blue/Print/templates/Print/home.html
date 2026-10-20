@@ -1,241 +1,471 @@
+{% extends 'Print/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blue Print Agencies | Printers & Stationers</title>
-<meta name="description" content="Blue Print Agencies — dealers in offset printing, digital printing, corporate stationery and general merchants, dedicated to sharp, reliable print work for every business.">
 
-<!-- ============ FAVICONS (all screen sizes) ============ -->
-<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
-<link rel="icon" type="image/png" sizes="48x48" href="{% static 'images/favicon-48x48.png' %}">
-<link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon-96x96.png' %}">
-<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
-<link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/android-chrome-192x192.png' %}">
-<link rel="icon" type="image/png" sizes="512x512" href="{% static 'images/android-chrome-512x512.png' %}">
-<link rel="mask-icon" href="{% static 'images/safari-pinned-tab.svg' %}" color="#2AAAE1">
-<link rel="manifest" href="{% static 'images/site.webmanifest' %}">
-<meta name="msapplication-TileImage" content="{% static 'images/mstile-150x150.png' %}">
-<meta name="msapplication-TileColor" content="#2AAAE1">
-<meta name="msapplication-config" content="{% static 'images/browserconfig.xml' %}">
-<meta name="theme-color" content="#2AAAE1">
-
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- Site CSS -->
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=VlCXxwg7Xa8x"></script>
-</head>
-<body>
-
-<!-- ============ TOP INFO BAR ============ -->
-<div class="topbar d-none d-lg-block">
-  <div class="container d-flex justify-content-between align-items-center">
-    <div class="topbar-left">
-      <a href="tel:+254700123456" class="topbar-item">
-        <i class="bi bi-telephone-fill"></i> +254 721-960596
-      </a>
-      <a href="mailto:info@blueprintagenciesltd.co.ke" class="topbar-item">
-        <i class="bi bi-envelope-fill"></i> info@blueprintagenciesltd.co.ke | blueprint893@gmail.com
-      </a>
-
-    </div>
-    <div class="topbar-right">
-      <span class="topbar-social">
-        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://x.com" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      </span>
-    </div>
-  </div>
-</div>
-
-<!-- ============ NAVBAR ============ -->
-<header id="siteHeader" class="site-header">
-  <nav class="navbar navbar-expand-lg">
+{% block content %}
+<!-- Top Header & Text Block -->
+<section class="hero-section">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'images/BP-LOGO.png' %}" alt="Blue Print Agencies - Printers & Stationers - Dealers in Offset Printing, Stationery and General Merchants" class="brand-logo-full">
-      </a>
-
-      <!-- Custom hamburger: 3rd bar is intentionally shorter for a distinctive mark -->
-      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="hamburger-icon">
-          <span class="hamburger-line hamburger-line-1"></span>
-          <span class="hamburger-line hamburger-line-2"></span>
-          <span class="hamburger-line hamburger-line-3"></span>
-        </span>
-      </button>
-
-      <!-- offcanvas-lg: behaves as a normal inline nav on large screens,
-           becomes a right-side sliding panel below the lg breakpoint -->
-      <div class="offcanvas offcanvas-end offcanvas-lg" tabindex="-1" id="mainNav" aria-labelledby="mainNavLabel">
-        <div class="offcanvas-header d-lg-none">
-          <span class="offcanvas-title" id="mainNavLabel">Menu</span>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-          <ul class="navbar-nav mx-auto align-items-lg-center">
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'services' %}">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="{% url 'products' %}">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
-            </li>
-          </ul>
-
-          <div class="offcanvas-footer d-lg-none">
-            <div class="offcanvas-social">
-              <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-              <a href="https://x.com" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <div class="row">
+            <div class="col-lg-11">
+                <h1 class="hero-title">
+                    We are a state-of-the-art, <span class="text-highlight"><br> full-service design, printing,<br> and branding company,</span><br>
+                </h1>
+                <div class="hero-subtitle">
+                    committed to delivering efficient, reliable, and high-quality solutions <br>
+                    tailored to meet our clients’ needs.
+                </div>
             </div>
-            <p class="offcanvas-copyright">&copy; 2026 All Rights Reserved.</p>
-          </div>
         </div>
-      </div>
     </div>
-  </nav>
-</header>
+</section>
 
-
-<!-- ============ PAGE CONTENT ============ -->
-<main>
-  {% block content %}{% endblock %}
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="container footer-top ">
-    <div class="row gy-5">
-
-      <div class="col-lg-5">
-        <h3 class="footer-help-title">Need Help?</h3>
-        <a href="mailto:info@blueprintagencies.com" class="footer-help-email">info@blueprintagenciesltd.co.ke</a>
-      </div>
-
-      <div class="col-6 col-lg-2">
-        <div class="footer-heading-wrap">
-          <span class="footer-heading-dash"></span>
-          <h6 class="footer-heading">Navigation</h6>
+<!-- Hero Image Section (Full Width Media Container) -->
+<section class="hero-media-container container-fluid px-0 mb-0">
+    <div class="hero-media-wrapper">
+        <!-- Main Image (masked so the zoom animation stays contained) -->
+        <div class="hero-image-mask">
+            <img src="{% static 'images/Homepage.webp' %}" alt="Offset printing press in action" class="hero-image">
         </div>
-        <ul class="footer-links">
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
-          <li><a href="{% url 'services' %}">Services</a></li>
-          <li><a href="{% url 'products' %}">Products</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-        </ul>
-      </div>
 
-      <div class="col-6 col-lg-2">
-        <div class="footer-heading-wrap">
-          <span class="footer-heading-dash"></span>
-          <h6 class="footer-heading">Social Media</h6>
+        <!-- Floating Contact Card -->
+        <div class="contact-overlay-box">
+            <div class="overlay-title">
+                Got a print job?<br>
+                Lets talk!
+            </div>
+            <h3 class="overlay-phone">+254 180 213 430</h3>
         </div>
-        <ul class="footer-links">
-          <li><a href="https://facebook.com">Facebook</a></li>
-          <li><a href="https://x.com">Twitter</a></li>
-          <li><a href="https://instagram.com">Instagram</a></li>
-          <li><a href="https://linkedin.com">Linkedin</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-3">
-        <div class="footer-heading-wrap">
-          <span class="footer-heading-dash"></span>
-          <h6 class="footer-heading">Contact Info</h6>
-        </div>
-        <p class="footer-contact">Luthuli Avenue - Kamae lane <br>
-                                  Goodhope Hse, Ground flr Office 23<br>Nairobi, Kenya</p>
-        <p class="footer-contact"><a href="tel:+254700123456">+254 721 960 596</a></p>
-      </div>
-
     </div>
-  </div>
+</section>
 
-  <div class="footer-bottom py-3">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <p class="mb-0">&copy; Copyright by Blue Print Agencies 2026.</p>
-      <button id="backToTop" class="back-to-top" aria-label="Back to top">
-        <i class="bi bi-arrow-up"></i>
-      </button>
+<!-- ============ WHAT WE DO / SERVICES SECTION ============ -->
+<section class="services-section">
+    <div class="container">
+        <div class="services-cards-col">
+            <div class="row g-4 services-cards-grid">
+
+                <!-- Card 1 -->
+                <div class="col-md-6 service-card-col">
+                   <a href="{% url 'services' %}"> 
+                    <div class="service-card">
+                        <div class="service-card-image">
+                            <img src="{% static 'images/packaging-3.png' %}" alt="Digital & Offset Printing" loading="lazy">
+                            <div class="service-icon">
+                                <i class="bi bi-printer"></i>
+                            </div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3 class="service-card-title">Digital & Offset Printing</h3>
+                            <p class="service-card-text">
+                                From DESIGN to PRINT under one roof as we offer state of the Art, Digital
+                                & Offset Printing services for your print jobs
+                            </p>
+                        </div>
+                    </div>
+                   </a> 
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 service-card-col">
+                   <a href="{% url 'services' %}">  
+                    <div class="service-card">
+                        <div class="service-card-image">
+                            <img src="{% static 'images/Roll-up-Banner-DHL.png' %}" alt="Indoor & Outdoor Advertising" loading="lazy">
+                            <div class="service-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3 class="service-card-title">Indoor & Outdoor Advertising</h3>
+                            <p class="service-card-text">
+                                Brand recognition is everything, thus we owe our clients the best services
+                                 when it comes to outdoor advertising.
+                            </p>
+                        </div>
+                    </div>
+                   </a> 
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 service-card-col">
+                   <a href="{% url 'services' %}">  
+                    <div class="service-card">
+                        <div class="service-card-image">
+                            <img src="{% static 'images/helmet.png' %}" alt="PPEs" loading="lazy">
+                            <div class="service-icon">
+                                <i class="bi bi-shield-fill-check"></i>
+                            </div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3 class="service-card-title">PPEs</h3>
+                            <p class="service-card-text">
+                                We supply quality personal protective equipment to keep your team safe,
+                                compliant, and ready for the job.
+                            </p>
+                        </div>
+                    </div>
+                   </a> 
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 service-card-col">
+                  <a href="{% url 'services' %}">   
+                    <div class="service-card">
+                        <div class="service-card-image">
+                            <img src="{% static 'images/safety.png' %}" alt="Safety Signages" loading="lazy">
+                            <div class="service-icon">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                            </div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3 class="service-card-title">Safety Signages</h3>
+                            <p class="service-card-text">
+                                Clear, durable safety signage that keeps your premises compliant and
+                                your people informed at a glance.
+                            </p>
+                        </div>
+                    </div>
+                  </a>  
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-md-6 service-card-col">
+                  <a href="{% url 'services' %}">                
+                    <div class="service-card">
+                        <div class="service-card-image">
+                            <img src="{% static 'images/stationery.png' %}" alt="Stationery Supplies" loading="lazy">
+                            <div class="service-icon">
+                                <i class="bi bi-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3 class="service-card-title">Stationery Supplies</h3>
+                            <p class="service-card-text">
+                                What your business needs is a supplier that can provide the best of office
+                                products and supplies at great prices and convenience.
+                            </p>
+                        </div>
+                    </div>
+                  </a>  
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-md-6 service-card-col">
+                   <a href="{% url 'services' %}">  
+                    <div class="service-card">
+                        <div class="service-card-image">
+                            <img src="{% static 'images/fabric-stitching.png' %}" alt="Fabric Branding & Stitching" loading="lazy">
+                            <div class="service-icon">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3 class="service-card-title">Fabric Branding & Stitching</h3>
+                            <p class="service-card-text">
+                                We set trends by offering you the latest fabrics at factory direct prices. 
+                            </p>
+                        </div>
+                    </div>
+                   </a> 
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</footer>
+</section>
 
-<!-- <div id="cookieConsentBanner" class="cookie-consent-banner">
-  <div class="cookie-consent-inner">
-    <div class="cookie-consent-text">
-      <p class="mb-2">
-        We use cookies for essential site functions and, with your consent, for live chat and
-        analytics. See our <a href="{% url 'privacy_policy' %}" target="_blank">Privacy &amp; Cookie Policy</a>
-        for details.
-      </p>
-
-      <div class="cookie-consent-options">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="consentNecessary" checked disabled>
-          <label class="form-check-label" for="consentNecessary">
-            Necessary <span class="text-muted">(always on)</span>
-          </label>
+<!-- ============ FEATURED WORKS SECTION ============ -->
+<section class="featured-section">
+    <div class="featured-header-bg">
+        <div class="container">
+            <div class="section-tag-wrapper mb-3">
+                <span class="section-tag">FEATURED WORKS</span>
+            </div>
+            <h2 class="featured-title">
+                Every print job is handled with care, from the first proof to the final delivery.
+            </h2>
         </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="consentChat" checked>
-          <label class="form-check-label" for="consentChat">
-            Live chat (Chatway)
-          </label>
-        </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="consentAnalytics" checked>
-          <label class="form-check-label" for="consentAnalytics">
-            Analytics
-          </label>
-        </div>
-      </div>
     </div>
 
-    <div class="cookie-consent-actions">
-  <button type="button" id="cookieRejectBtn" class="btn btn-sm btn-outline-secondary">
-    Reject non-essential
-  </button>
-  <button type="button" id="cookieSaveBtn" class="btn btn-sm btn-primary">
-    Save preferences
-  </button>
-</div>>
-  </div>
-</div> -->
-<!-- ============ FLOATING WHATSAPP BUTTON (bottom-left) ============ -->
-<a href="https://wa.me/254721960596" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
-  <i class="bi bi-whatsapp"></i>
-</a>
+    <div class="container">
+        <div class="featured-cards-col">
+            <div class="row g-4 featured-grid featured-cards-grid">
 
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{% static 'js/main.js' %}"></script>
+                <!-- Project 1 -->
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <div class="project-image-wrapper">
+                            <img src="{% static 'images/tear-drop-banner.jpg' %}" alt="Tear Drop Banners" class="project-image">
+                        </div>
+                        <h4 class="project-title"><a href="/products/?category=advertising" class="text-reset text-decoration-none">Indoor & Outdoor Advertising</a></h4>
+                        <p class="project-category">Teardrops, Event Banners, Roll-up Stands, Buntings, Direction Signages, Promotional Portable, Kiosks, Pop - Up Counter</p>
+                    </div>
+                </div>
 
+                <!-- Project 2 -->
+                <div class="col-md-6">
+                    <div class="project-card project-card-offset">
+                        <div class="project-image-wrapper">
+                            <img src="{% static 'images/stairs.jpg' %}" alt="Product Packaging" class="project-image">
+                        </div>
+                        <h4 class="project-title"><a href="/products/?category=signs" class="text-reset text-decoration-none">Indoor & Outdoor Signs</a></h4>
+                        <p class="project-category">3d/2d Backlit Signs, Monument Signs, Reception Signs, Safety Signs, Traffic Signs, Indoor & Outdoor Branding, Direction Signs, Office/Lobby/Department Signs</p>
+                    </div>
+                </div>
 
+                <!-- Project 3 -->
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <div class="project-image-wrapper">
+                            <img src="{% static 'images/fabric-branding.png' %}" alt="Safety Signages" class="project-image">
+                        </div>
+                        <h4 class="project-title"><a href="/products/?category=fabric" class="text-reset text-decoration-none">Fabric Branding & Stitching</a></h4>
+                        <p class="project-category"> We serve range from Hospitality, Security, Military, Corporate, Medical,
+                                                     Education and Food & Beverages Organization and many more</p>
+                    </div>
+                </div>
 
-{% block extra_js %}{% endblock %}
-</body>
-</html>
+                <!-- Project 4 -->
+                <div class="col-md-6">
+                    <div class="project-card project-card-offset">
+                        <div class="project-image-wrapper">
+                            <img src="{% static 'images/Calendar-sample.png' %}" alt="Offset Printing" class="project-image">
+                        </div>
+                        <h4 class="project-title"><a href="/products/?category=offset" class="text-reset text-decoration-none">Digital & Offset Printing</a></h4>
+                        <p class="project-category">Notebooks/Diaries, Posters & Banners, Calendars,Bags, Annual Reports, Catalogs, Packaging, Brochures, Stationeries, Magazines, Standees, Panaflex Flex Print, Vehicle Branding, Screen & Uv Print, Vinyl Print and More</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Second Row: Single Project Card + View All CTA -->
+        <div class="row g-4 featured-grid featured-grid-bottom">
+
+            <!-- Project 5 -->
+            <div class="col-md-6">
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="{% static 'images/stationery.png' %}" alt="Invoice Books & Forms" class="project-image">
+                    </div>
+                    <h4 class="project-title"><a href="/products/?category=stationery" class="text-reset text-decoration-none">Stationery Supplies</a></h4>
+                    <p class="project-category">Toners & ink cartridge, Printing papers, Files, Photocopying papers, Writing & Legal Pads, Rubber Band, Tacks, Short hand notebooks, Envelopes, Packing & masking tape, Folders, Glue, Push pins, Paper clips</p>
+                </div>
+            </div>
+
+            <!-- View All Projects CTA -->
+            <div class="col-md-6">
+                <div class="featured-cta">
+                    <h3 class="featured-cta-title">Want to see more of our work?</h3>
+                    <p class="featured-cta-text">Browse the full archive of print jobs, stationery sets, and packaging projects we've delivered for clients across every industry.</p>
+                    <a href="/products/" class="btn btn-cyan-square">VIEW ALL PRODUCTS</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ TESTIMONIALS SECTION ============ -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+
+            <!-- Left Text Column -->
+            <div class="col-lg-4">
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">TESTIMONIALS</span>
+                </div>
+                <h2 class="testimonials-title mb-4">
+                    Dont just take our word for it. Listen to our amazing customers saying about our print work.
+                </h2>
+                <button type="button" class="btn btn-cyan-square" data-bs-toggle="modal" data-bs-target="#testimonialModal">WRITE FOR US</button>
+            </div>
+
+            <!-- Right Slideshow Column -->
+            <div class="col-lg-8">
+                <div class="testimonial-slider">
+                    <div class="testimonial-pages">
+
+                        <!-- Page 1 -->
+                        <div class="testimonial-page active">
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <div>
+                                        <p class="testimonial-name">Mona Parker</p>
+                                        <p class="testimonial-role">Retail Store Owner</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Blue Print Agencies handled our packaging redesign end to end. Absolutely reliable people with real attention to detail, recommended.
+                                </p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <div>
+                                        <p class="testimonial-name">Sarah Casey</p>
+                                        <p class="testimonial-role">CEO, Casey & Co</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    We needed a full corporate stationery set on a tight deadline and Blue Print Agencies delivered flawless work on time.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Page 2 -->
+                        <div class="testimonial-page">
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                        <p class="testimonial-name">James Miller</p>
+                                        <p class="testimonial-role">Founder, TechNova</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Their team took the time to understand our brand before running a single sheet. The finished business cards felt tailor made, not generic.
+                                </p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <div>
+                                        <p class="testimonial-name">Elena Ruiz</p>
+                                        <p class="testimonial-role">Marketing Director</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Fast, communicative, and genuinely careful with color accuracy. We've worked with a lot of printers and this was by far the smoothest process.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Page 3 -->
+                        <div class="testimonial-page">
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <div>
+                                        <p class="testimonial-name">David Okoro</p>
+                                        <p class="testimonial-role">Operations Lead</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    From proof to final delivery they kept us in the loop at every step. It's rare to find a print partner this organized and this careful.
+                                </p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <div>
+                                        <p class="testimonial-name">Priya Nair</p>
+                                        <p class="testimonial-role">Founder, Loomcraft</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">
+                                    Our new packaging looked exactly like the proof, no surprises. They clearly know what they're doing.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="testimonial-dots">
+                        <button class="testimonial-dot active" type="button" aria-label="Show testimonials 1"></button>
+                        <button class="testimonial-dot" type="button" aria-label="Show testimonials 2"></button>
+                        <button class="testimonial-dot" type="button" aria-label="Show testimonials 3"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ CLIENTS SECTION ============ -->
+<section class="clients-section">
+    <div class="clients-wide-container">
+        <div class="clients-card clients-card-static">
+            <p class="clients-tag">TRUSTED BY BUSINESSES ACROSS THE REGION:</p>
+            <div class="clients-logos clients-logos-static">
+                <img src="{% static 'images/DHL.png' %}" alt="NovaWorks" class="client-logo">
+                <img src="{% static 'images/SSL.png' %}" alt="Trustly" class="client-logo">
+                <img src="{% static 'images/CALIDAD.png' %}" alt="Echopoint" class="client-logo">
+                <img src="{% static 'images/AMKA.png' %}" alt="Sheppard." class="client-logo">
+                <img src="{% static 'images/FIRST-CHOICE.png' %}" alt="Opengrid" class="client-logo">
+                <img src="{% static 'images/KABATI.png' %}" alt="NovaWorks" class="client-logo">
+                <img src="{% static 'images/KIBABII.png' %}" alt="Echopoint" class="client-logo">
+                <img src="{% static 'images/MAFANIKIO.png' %}" alt="Sheppard." class="client-logo">
+                <img src="{% static 'images/ST-JOHN.png' %}" alt="NovaWorks" class="client-logo">
+                <img src="{% static 'images/AGNES-SCHOOL.png' %}" alt="Echopoint" class="client-logo">
+                <img src="{% static 'images/TUMAINI.png' %}" alt="Sheppard." class="client-logo">
+                <img src="{% static 'images/WATBELL.png' %}" alt="Opengrid" class="client-logo">
+                <img src="{% static 'images/ZAWADI.png' %}" alt="Opengrid" class="client-logo">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WRITE FOR US / TESTIMONIAL MODAL ============ -->
+<div class="modal fade" id="testimonialModal" tabindex="-1" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content testimonial-modal-content">
+            <div class="modal-header testimonial-modal-header">
+                <h5 class="modal-title" id="testimonialModalLabel">Share your experience</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+
+                <div id="testimonialAlert" class="testimonial-alert" hidden></div>
+
+                <form id="testimonialForm" action="{% url 'testimonial_submit' %}" method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="testimonialName" class="form-label">Your name</label>
+                        <input type="text" class="form-control" id="testimonialName" name="name" placeholder="e.g. Jane Wanjiru" required>
+                        <div class="invalid-feedback" data-error-for="name"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="testimonialRole" class="form-label">Job title / company <span class="text-muted fw-normal">(optional)</span></label>
+                        <input type="text" class="form-control" id="testimonialRole" name="role" placeholder="e.g. CEO, Casey & Co.">
+                        <div class="invalid-feedback" data-error-for="role"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="testimonialEmail" class="form-label">Email <span class="text-muted fw-normal">(optional, not shown publicly)</span></label>
+                        <input type="email" class="form-control" id="testimonialEmail" name="email" placeholder="you@example.com">
+                        <div class="invalid-feedback" data-error-for="email"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label d-block">Your rating</label>
+                        <div class="star-rating">
+                            <input type="radio" name="rating" id="star5" value="5" checked>
+                            <label for="star5" title="5 stars"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star4" value="4">
+                            <label for="star4" title="4 stars"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star3" value="3">
+                            <label for="star3" title="3 stars"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star2" value="2">
+                            <label for="star2" title="2 stars"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star1" value="1">
+                            <label for="star1" title="1 star"><i class="bi bi-star-fill"></i></label>
+                        </div>
+                        <div class="invalid-feedback" data-error-for="rating"></div>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="testimonialMessage" class="form-label">Your testimonial</label>
+                        <textarea class="form-control" id="testimonialMessage" name="message" rows="4" placeholder="Tell us about your experience working with us…" required></textarea>
+                        <div class="invalid-feedback" data-error-for="message"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-cyan-square w-100 mt-3" id="testimonialSubmitBtn">
+                        <span class="btn-label">SUBMIT TESTIMONIAL</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
