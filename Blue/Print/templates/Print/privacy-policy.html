@@ -1,0 +1,54 @@
+{% extends "Print/base.html" %}
+{% block content %}
+<div class="container py-5 static-page-content">
+  <h1>Privacy &amp; Cookie Policy</h1>
+  <p><em>Last updated: [date]</em></p>
+
+  <h2>1. Who we are</h2>
+  <p>Blue Print Agencies Ltd ("we", "us"), Luthuli Avenue - Kamae Lane, Goodhope House,
+     Nairobi, Kenya, is the data controller for personal data collected through this website.
+     Contact: info@blueprintagenciesltd.co.ke.</p>
+
+  <h2>2. What we collect</h2>
+  <ul>
+    <li><strong>Contact form:</strong> name, phone number, email address, and message content.</li>
+    <li><strong>Live chat (Chatway):</strong> name, phone number/email if you provide them, and
+        chat message content. Chatway, our third-party chat provider, may also set cookies to
+        run the widget.</li>
+  </ul>
+
+  <h2>3. Why we collect it</h2>
+  <p>To respond to enquiries, provide quotes, and follow up on services you've asked about.
+     This is based on your consent and our legitimate interest in responding to business
+     enquiries.</p>
+
+  <h2>4. Cookies we use</h2>
+  <table class="table table-bordered">
+    <thead><tr><th>Cookie</th><th>Purpose</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr><td>csrftoken, sessionid</td><td>Required for site security/functionality</td><td>Necessary</td></tr>
+      <tr><td>bp_consent</td><td>Remembers your cookie choice</td><td>Necessary</td></tr>
+      <tr><td>Chatway cookies</td><td>Runs the live chat widget</td><td>Functional (consent-based)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. Sharing with third parties</h2>
+  <p>Chat data is processed by Chatway on our behalf. We do not sell personal data.</p>
+
+  <h2>6. Retention</h2>
+  <p>We retain enquiry data for [X months/years] or as needed to respond to you, then delete it.</p>
+
+  <h2>7. Your rights</h2>
+  <p>Under Kenya's Data Protection Act, 2019, you may request access to, correction of, or
+     deletion of your personal data, or object to its processing, by contacting
+     info@blueprintagenciesltd.co.ke. You may also lodge a complaint with the Office of the
+     Data Protection Commissioner (ODPC).</p>
+
+  <h2>8. Managing cookie preferences</h2>
+  <p>You can update your choice anytime:
+     <button class="btn btn-link p-0" onclick="localStorage.removeItem('bp_cookie_consent'); location.reload();">
+       Manage cookie preferences
+     </button>
+  </p>
+</div>
+{% endblock %}

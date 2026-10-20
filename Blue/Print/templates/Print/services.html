@@ -1,0 +1,237 @@
+{% extends 'Print/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ SERVICES HERO SECTION ============ -->
+<section class="services-hero-section">
+    <div class="container">
+        <div class="row gy-5 align-items-start">
+
+            <!-- Left Text Column -->
+            <div class="col-lg-4 services-hero-text-col">
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">WHAT WE DO</span>
+                </div>
+                <h1 class="services-hero-title mb-4">
+                    We bring precision printing to every brand, <span class="text-highlight">everywhere</span>.
+                </h1>
+                <p class="services-hero-description mb-4">
+                    This isn't ink for ink's sake, it's about giving your business a physical presence people remember. Our team pairs modern equipment with an eye for detail on every job, big or small.
+                </p>
+                <a href="/contact/" class="btn btn-accent">GET STARTED NOW</a>
+            </div>
+
+            <!-- Right Column: Staggered Flip Cards -->
+            <div class="col-lg-8 services-hero-cards-col">
+                <div class="service-flip-grid">
+
+                    <!-- Column 1 -->
+                    <div class="service-flip-col">
+                        <div class="service-flip-item">
+                            <div class="service-flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" style="--card-img: url('../../static/images/packaging-3.png');">
+                                        <div class="flip-card-icon"><i class="bi bi-printer"></i></div>
+                                    </div>
+                                    <div class="flip-card-back" style="--card-img: url('../../static/images/packaging-3.png');">
+                                        <div class="flip-card-icon"><i class="bi bi-printer"></i></div>
+                                        <a href="/contact/" class="flip-card-link">Contact us <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-caption">
+                                <h3 class="flip-card-title">Digital & Offset Printing</h3>
+                            </div>
+                        </div>
+                        <div class="service-flip-item">
+                            <div class="service-flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" style="--card-img: url('../../static/images/fabric-branding.png');">
+                                        <div class="flip-card-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                    </div>
+                                    <div class="flip-card-back" style="--card-img: url('../../static/images/t-shirts-and-caps.jpg');">
+                                        <div class="flip-card-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                        <a href="/contact/" class="flip-card-link">Contact us <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-caption">
+                                <h3 class="flip-card-title">Fabric Branding & Stitching</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="service-flip-col">
+                        <div class="service-flip-item">
+                            <div class="service-flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" style="--card-img: url('../../static/images/Roll-up-Banner-DHL.png');">
+                                        <div class="flip-card-icon"><i class="bi bi-file-earmark-image"></i></div>
+                                    </div>
+                                    <div class="flip-card-back" style="--card-img: url('../../static/images/TEAR-DROP-BANNER.webp');">
+                                        <div class="flip-card-icon"><i class="bi bi-file-earmark-image"></i></div>
+                                        <a href="/contact/" class="flip-card-link">Contact us <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-caption">
+                                <h3 class="flip-card-title">Indoor & Outdoor Advertising</h3>
+                            </div>
+                        </div>
+                        <div class="service-flip-item">
+                            <div class="service-flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" style="--card-img: url('../../static/images/stationery.png');">
+                                        <div class="flip-card-icon"><i class="bi bi-box-seam"></i></div>
+                                    </div>
+                                    <div class="flip-card-back" style="--card-img: url('../../static/images/Books-Perfect-Binding.jpg');">
+                                        <div class="flip-card-icon"><i class="bi bi-box-seam"></i></div>
+                                        <a href="/contact/" class="flip-card-link">Contact us <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-caption">
+                                <h3 class="flip-card-title">Stationery Supplies</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="service-flip-col">
+                        <div class="service-flip-item">
+                            <div class="service-flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" style="--card-img: url('../../static/images/signage-.jpg');">
+                                        <div class="flip-card-icon"><i class="bi bi-envelope-paper"></i></div>
+                                    </div>
+                                    <div class="flip-card-back" style="--card-img: url('../../static/images/pylon.jpg');">
+                                        <div class="flip-card-icon"><i class="bi bi-envelope-paper"></i></div>
+                                        <a href="/contact/" class="flip-card-link">Contact us <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-caption">
+                                <h3 class="flip-card-title">Indoor & Outdoor Signs</h3>
+                            </div>
+                        </div>
+                        <div class="service-flip-item">
+                            <div class="service-flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" style="--card-img: url('../../static/images/giveaway.png');">
+                                        <div class="flip-card-icon"><i class="bi bi-bar-chart-line"></i></div>
+                                    </div>
+                                    <div class="flip-card-back" style="--card-img: url('../../static/images/water-bottles.jpg');">
+                                        <div class="flip-card-icon"><i class="bi bi-bar-chart-line"></i></div>
+                                        <a href="/contact/" class="flip-card-link">Contact us <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-caption">
+                                <h3 class="flip-card-title">Giveaway & Promotional Items</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ FEATURE / PROCESS SLIDESHOW SECTION ============ -->
+<section class="services-feature-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+
+            <!-- Left: Media slideshow (image slides in from the left) -->
+            <div class="col-lg-6 feature-media-col">
+                <div class="feature-media-wrapper">
+                    <div class="feature-slide-image active" data-slide="0" style="background-image: url('{% static 'images/packaging.png' %}');"></div>
+                    <div class="feature-slide-image" data-slide="1" style="background-image: url('{% static 'images/fabric-branding.png' %}');"></div>
+                    <div class="feature-slide-image" data-slide="2" style="background-image: url('{% static 'images/banner-printing.jpg' %}');"></div>
+                    <div class="feature-slide-image" data-slide="3" style="background-image: url('{% static 'images/stationery.png' %}');"></div>
+                    <div class="feature-slide-image" data-slide="4" style="background-image: url('{% static 'images/signage-.jpg' %}');"></div>
+                    <div class="feature-slide-image" data-slide="5" style="background-image: url('{% static 'images/bags.jpg' %}');"></div>
+                    <div class="feature-slide-image" data-slide="6" style="background-image: url('{% static 'images/Yoghurt-cups.jpg' %}');"></div>
+                </div>
+            </div>
+
+            <!-- Right: Text slideshow (copy slides in from the right) -->
+            <div class="col-lg-6">
+                <div class="section-tag-wrapper mb-3">
+                    <span class="tag-line"></span>
+                    <span class="section-tag">OUR SERVICES</span>
+                </div>
+
+                <div class="feature-slide-text-wrapper">
+                    <div class="feature-slide-text active" data-slide="0">
+                        <h2 class="services-feature-title mb-4">From DESIGN to PRINT state of the Art, Digital &amp;  Offset Printing.</h2>
+                        <p class="services-feature-text">From Notebooks/Diaries,Posters & Banners, Calendars, Bags, Annual Reports, Catalogs, Packaging, Brochures, Stationeries, Magazines, Standees, Panaflex Flex Print, Vehicle Branding, Screen & Uv Print, Vinyl Print and More</p>
+                    </div>
+                    <div class="feature-slide-text" data-slide="1">
+                        <h2 class="services-feature-title mb-4">Fabric branding and stitching, made to last.</h2>
+                        <p class="services-feature-text">We pride ourselves in being a market leader and innovator. We set trends
+                         by offering you the latest fabrics at factory direct prices. The segments we
+                         serve range from Hospitality, Security, Military, Corporate, Medical,
+                         Education and Food & Beverages Organization and many more.</p>
+                    </div>
+                    <div class="feature-slide-text" data-slide="2">
+                        <h2 class="services-feature-title mb-4">Indoor &amp; outdoor advertising that gets noticed.</h2>
+                        <p class="services-feature-text">Teardrops, Event Banners, Roll-up Stands, Buntings, Direction Signages, Promotional Portable, Kiosks, Pop - Up Counters, Literature Stands, Wheel Covers, Flags</p>
+                    </div>
+                    <div class="feature-slide-text" data-slide="3">
+                        <h2 class="services-feature-title mb-4">Stationery supplies, stocked and ready.</h2>
+                        <p class="services-feature-text">Toners & ink cartridge, Printing papers, Files, Photocopying papers, Writing & Legal Pads, Rubber Band, Tacks, Short hand notebooks, Envelopes, Packing & masking tape, Folders, Glue, Push pins, Paper clips, Highlighters, Labels, Letter trays, Markers, Paper Punches, Pen, Post it notes</p>
+                    </div>
+                    <div class="feature-slide-text" data-slide="4">
+                        <h2 class="services-feature-title mb-4">Indoor &amp; outdoor signs, built to be seen.</h2>
+                        <p class="services-feature-text">3d/2d Backlit Signs, Monument Signs, Reception Signs, Safety Signs, Traffic Signs, Indoor & Outdoor Branding, Direction Signs, Office/Lobby/Department Signs</p>
+                    </div>
+                    <div class="feature-slide-text" data-slide="5">
+                        <h2 class="services-feature-title mb-4">Giveaways and promotional items people keep.</h2>
+                        <p class="services-feature-text">Shields, Pen, Keychains, Calendars, Wallets, Tea Coasters, Diares/notebooks, Goodie Bags, T & Dress Shirts, Mugs, Usb & Powerbanks, Customized Gift Sets, Clocks, Mugs and Lot More</p>
+                    </div>
+                    <div class="feature-slide-text" data-slide="6">
+                        <h2 class="services-feature-title mb-4">Graphic design that helps you develop your business. </h2>
+                        <p class="services-feature-text">Branding, Corporate Identity, Packaging Designs, Social Media Designs, Marketing Collateral, Advertisement Designs, Exhibition Stall Designs, Interior Designs</p>
+                    </div>
+                </div>
+
+                <div class="feature-slide-dots">
+                    <button type="button" class="feature-slide-dot active" data-slide="0" aria-label="Show slide 1"></button>
+                    <button type="button" class="feature-slide-dot" data-slide="1" aria-label="Show slide 2"></button>
+                    <button type="button" class="feature-slide-dot" data-slide="2" aria-label="Show slide 3"></button>
+                    <button type="button" class="feature-slide-dot" data-slide="3" aria-label="Show slide 4"></button>
+                    <button type="button" class="feature-slide-dot" data-slide="4" aria-label="Show slide 5"></button>
+                    <button type="button" class="feature-slide-dot" data-slide="5" aria-label="Show slide 6"></button>
+                    <button type="button" class="feature-slide-dot" data-slide="6" aria-label="Show slide 7"></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA SECTION (over footer top) ============ -->
+<section class="services-cta-section">
+    <div class="clients-wide-container">
+        <div class="services-cta-header">
+            <p class="services-cta-tag">READY WHEN YOU ARE</p>
+            <h2 class="services-cta-title">
+                Let's put your brand on <span class="text-highlight">paper</span>.
+            </h2>
+        </div>
+        <div class="services-cta-card">
+            <p class="services-cta-text">
+                Tell us what you're printing and we'll get back to you with a quote, usually within one business day.
+            </p>
+            <a href="/contact/" class="btn btn-accent services-cta-btn">GET A QUOTE</a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

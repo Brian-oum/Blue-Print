@@ -1,0 +1,126 @@
+{% extends 'Print/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ PRODUCTS SECTION ============ -->
+<section class="products-section">
+    <div class="container">
+
+        {% if 'category' in request.GET %}
+        <!-- ============ FILTERED VIEW: products for the chosen category ============ -->
+        <div class="section-tag-wrapper mb-3 justify-content-center">
+            <span class="tag-line"></span>
+            <span class="section-tag">OUR PRODUCTS</span>
+        </div>
+        <h1 class="products-title text-center mb-3">
+            {% if current_category %}
+                {% for key, label in category_choices %}{% if key == current_category %}{{ label }}{% endif %}{% endfor %}
+            {% else %}
+                All Products
+            {% endif %}
+        </h1>
+        <div class="products-back-link text-center mb-5">
+            <a href="/products/" class="products-back-btn"><i class="bi bi-arrow-left"></i> Back to categories</a>
+        </div>
+
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-sm-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" loading="lazy">
+                    </div>
+                    <h3 class="product-title">{{ product.name }}</h3>
+                    <a href="{{ product.whatsapp_url }}" class="btn btn-accent product-quote-btn" target="_blank" rel="noopener">
+                        <i class="bi bi-whatsapp"></i> Get a Quote
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-center text-muted">No products available in this category right now — check back soon.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+        <nav class="products-pagination" aria-label="Products pagination">
+            <ul class="pagination justify-content-center mb-0">
+
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}" aria-label="Previous">&laquo;</a>
+                </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}{% if current_category %}&category={{ current_category }}{% endif %}">{{ num }}</a>
+                </li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}" aria-label="Next">&raquo;</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        {% endif %}
+
+        {% else %}
+        <!-- ============ LANDING VIEW: category picker only ============ -->
+        <div class="section-tag-wrapper mb-3 justify-content-center">
+            <span class="tag-line"></span>
+            <span class="section-tag">OUR PRODUCTS</span>
+        </div>
+        <h1 class="products-title text-center mb-5">Browse what we can print for you</h1>
+
+        <div class="category-picker-grid">
+            <a href="/products/?category=" class="category-tile">
+                <span class="category-tile-image" style="--tile-img: url('{% static 'images/packaging-3.png' %}');">
+                    <span class="category-tile-overlay"></span>
+                </span>
+                <span class="category-tile-label">All Products</span>
+            </a>
+            {% for key, label in category_choices %}
+            <a href="/products/?category={{ key }}" class="category-tile">
+                <span class="category-tile-image"
+                   style="--tile-img: url('{% static 'images/packaging.png' %}');
+                          {% if key == 'fabric' %}--tile-img: url('{% static 'images/fabric-branding.png' %}');{% endif %}
+                          {% if key == 'advertising' %}--tile-img: url('{% static 'images/banner-printing.jpg' %}');{% endif %}
+                          {% if key == 'stationery' %}--tile-img: url('{% static 'images/stationery.png' %}');{% endif %}
+                          {% if key == 'signs' %}--tile-img: url('{% static 'images/signage-.jpg' %}');{% endif %}
+                          {% if key == 'giveway' %}--tile-img: url('{% static 'images/bags.jpg' %}');{% endif %}
+                          {% if key == 'graphic' %}--tile-img: url('{% static 'images/Yoghurt-cups.jpg' %}');{% endif %}">
+                    <span class="category-tile-overlay"></span>
+                </span>
+                <span class="category-tile-label">{{ label }}</span>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<section class="services-cta-section">
+    <div class="clients-wide-container">
+        <div class="services-cta-header">
+            <p class="services-cta-tag">READY WHEN YOU ARE</p>
+            <h2 class="services-cta-title">
+                Let's put your brand on <span class="text-highlight">paper</span>.
+            </h2>
+        </div>
+        <div class="services-cta-card">
+            <p class="services-cta-text">
+                Tell us what you're printing and we'll get back to you with a quote, usually within one business day.
+            </p>
+            <a href="/contact/" class="btn btn-accent">GET A QUOTE</a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
